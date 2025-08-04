@@ -12,10 +12,6 @@ A Java-based payment processing application designed to handle various payment o
   - [Installation](#installation)
   - [Running the Application](#running-the-application)
 - [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Configuration](#configuration)
-- [Testing](#testing)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -30,15 +26,13 @@ This Payment System is a robust Java application that provides comprehensive pay
 - **User Management**: Customer and merchant account management
 - **Security**: Encrypted payment data and secure authentication
 - **Reporting**: Transaction reports and analytics
-- **API Integration**: RESTful APIs for external system integration
+
 
 ## 🛠 Technology Stack
 
 - **Language**: Java
-- **Framework**: [Spring Boot/Spring Framework - Update as needed]
-- **Database**: [MySQL/PostgreSQL/MongoDB - Update as needed]
+- **Database**: [MySQL/PostgreSQL - Update as needed]
 - **Build Tool**: [Maven/Gradle - Update as needed]
-- **Testing**: [JUnit/TestNG - Update as needed]
 
 ## 🚀 Getting Started
 
@@ -55,7 +49,7 @@ Before running this application, make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ayushjai_Zeta/Payment.git
+   git clone https://github.com/Ayushj045/Payment
    cd Payment
    ```
 
@@ -119,24 +113,6 @@ Payment/
 └── README.md                          # Project documentation
 ```
 
-## 📚 API Documentation
-
-### Authentication Endpoints
-- `POST /api/auth/login` - User authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/logout` - User logout
-
-### Payment Endpoints
-- `POST /api/payments/process` - Process a payment
-- `GET /api/payments/{id}` - Get payment details
-- `GET /api/payments/user/{userId}` - Get user payment history
-- `PUT /api/payments/{id}/refund` - Process refund
-
-### Transaction Endpoints
-- `GET /api/transactions` - List all transactions
-- `GET /api/transactions/{id}` - Get transaction details
-- `POST /api/transactions/search` - Search transactions
-
 ## ⚙️ Configuration
 
 ### Database Configuration
@@ -166,30 +142,12 @@ export PAYMENT_API_KEY=your_payment_api_key
 export JWT_SECRET=your_jwt_secret
 ```
 
-## 🧪 Testing
-
-Run the test suite using:
-
-```bash
-# Maven
-mvn test
-
-# Gradle
-./gradlew test
-```
 
 ### Test Coverage
 - Unit tests for service layer
 - Integration tests for API endpoints
 - Database layer testing
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ### Code Style Guidelines
 - Follow Java naming conventions
@@ -204,8 +162,8 @@ This project is private and proprietary. All rights reserved.
 ## 📞 Contact
 
 **Project Owner**: ayushjai_Zeta  
-**Repository**: [ayushjai_Zeta/Payment](https://github.com/ayushjai_Zeta/Payment)  
-**Issues**: [Report Issues](https://github.com/ayushjai_Zeta/Payment/issues)
+**Repository**: [ayush045/Payment](https://github.com/Ayushj045/Payment)  
+**Issues**: [Report Issues](https://github.com/Ayushj045/Payment/issues)
 
 ---
 
