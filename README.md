@@ -74,8 +74,7 @@ A secure internal backend system to manage payment flows with traceability, repo
 ### Security Features
 - JWT-based authentication
 - Role-based access control
-- Password encryption using BCrypt
-- Method-level security annotations
+
 
 ---
 
@@ -84,8 +83,6 @@ A secure internal backend system to manage payment flows with traceability, repo
 - **Framework:** Spring Boot 3.5.4
 - **Security:** Spring Security with JWT
 - **Database:** PostgreSQL with JPA/Hibernate
-- **Validation:** Bean Validation (JSR-303)
-- **Documentation:** Built-in exception handling
 
 ---
 
