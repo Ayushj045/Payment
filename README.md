@@ -1,185 +1,152 @@
-# Payment System
+# Payment Management System
 
-A Java-based payment processing application designed to handle various payment operations and transactions.
+A comprehensive Java-based payment management system with role-based access control, audit trails, and real-time payment processing capabilities.
 
-## 📋 Table of Contents
+## 🏗️ System Architecture
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [License](#license)
-- [Contact](#contact)
+The system follows a layered architecture pattern with clear separation of concerns:
 
-## 🔍 Overview
+- **Presentation Layer**: Console-based user interface with menu-driven navigation
+- **Controller Layer**: Handles user interactions and orchestrates business operations
+- **Service Layer**: Contains business logic and asynchronous processing
+- **Repository Layer**: Data access abstraction with PostgreSQL integration
+- **Model Layer**: Domain entities representing business objects
 
-This Payment System is a robust Java application that provides comprehensive payment processing capabilities. The system is designed to handle various payment methods, transaction processing, and financial operations with security and reliability in mind.
+## 🚀 Features
 
-## ✨ Features
+### Core Functionality
+- ✅ **Payment Creation & Management**: Create, view, and manage payments with categorization
+- ✅ **Role-Based Access Control**: Admin, Finance Manager, and Viewer roles with specific permissions
+- ✅ **Payment Approval Workflow**: Three-state workflow (Pending → Approved/Rejected)
+- ✅ **Team Management**: Create teams and assign users for organizational structure
+- ✅ **Audit Trail**: Complete logging of all operations for compliance
+- ✅ **Salary Management**: Automated monthly salary generation for employees
 
-- **Payment Processing**: Handle multiple payment methods and gateways
-- **Transaction Management**: Secure transaction processing and tracking
-- **User Management**: Customer and merchant account management
-- **Security**: Encrypted payment data and secure authentication
-- **Reporting**: Transaction reports and analytics
+### Advanced Features
+- ⚡ **Asynchronous Processing**: Non-blocking operations using CompletableFuture
+- 🔐 **Secure Authentication**: BCrypt password hashing with session management
+- 📊 **Reporting System**: Monthly and quarterly financial reports
+- 🔍 **Payment Filtering**: Filter payments by status, user, date, and category
+- 🏢 **Multi-tenant Support**: Team-based payment organization
 
+## 🛠️ Technology Stack
 
-## 🛠 Technology Stack
+| Component | Technology |
+|-----------|------------|
+| **Language** | Java 17+ |
+| **Database** | PostgreSQL |
+| **Security** | BCrypt (jBCrypt) |
+| **Build Tool** | Maven |
+| **Architecture** | Layered Architecture |
+| **Concurrency** | CompletableFuture, ExecutorService |
 
-- **Language**: Java
-- **Database**: [MySQL/PostgreSQL - Update as needed]
-- **Build Tool**: [Maven/Gradle - Update as needed]
+## 📋 Prerequisites
 
-## 🚀 Getting Started
+- Java Development Kit (JDK) 17 or higher
+- PostgreSQL 12 or higher
+- Maven 3.6 or higher
+- Git
 
-### Prerequisites
+## 🔧 Installation & Setup
 
-Before running this application, make sure you have the following installed:
+### 1. Clone the Repository
+```bash
+git clone https://github.com/mahendrakarr_Zeta/payment-management-system.git
+cd payment-management-system
+```
+### 2. Configure Database Connection 
+Update database configuration in src/main/resources: 
+```bash 
+db.url=jdbc:postgresql://127.0.0.1/payment_management
+db.username=postgres
+db.password=<password>
+```
 
-- Java 11 or higher
-- [Maven 3.6+ / Gradle 6.0+ - Update as needed]
-- [Database system - Update as needed]
-- IDE (IntelliJ IDEA, Eclipse, or VS Code)
+## 🎯 Getting Started
 
-### Installation
+### First Time Setup
+1. **Start the Application**: Run the main class
+2. **Database Initialization**: The system automatically creates tables and default data
+3. **Default Admin Login**: 
+   - Email: `admin@admin.tech`
+   - Password: `admin@123`
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Ayushj045/Payment
-   cd Payment
-   ```
+### Basic Usage Flow
+1. **Login** with admin credentials
+2. **Create Users** with appropriate roles
+3. **Set up Teams** and assign users
+4. **Create Payments** and manage approval workflow
+5. **Generate Reports** for financial tracking
 
-2. **Configure the database**
-   ```bash
-   # Update application.properties or application.yml with your database configuration
-   # Example configuration needed
-   ```
+## 👥 User Roles & Permissions
 
-3. **Install dependencies**
-   ```bash
-   # For Maven
-   mvn clean install
-   
-   # For Gradle
-   ./gradlew build
-   ```
+| Role | Permissions |
+|------|-------------|
+| **Admin** | • Full system access<br/>• Create/delete payments<br/>• User management<br/>• Generate reports<br/>• Salary management |
+| **Finance Manager** | • Create/approve/reject payments<br/>• Team management<br/>• View all payments<br/>• Generate reports |
+| **Viewer** | • View own payments<br/>• Filter personal payments<br/>• Basic payment information access |
 
-### Running the Application
+## 📊 Database Schema
 
-1. **Start the application**
-   ```bash
-   # For Maven
-   mvn spring-boot:run
-   
-   # For Gradle
-   ./gradlew bootRun
-   
-   # Or run the JAR file
-   java -jar target/payment-system.jar
-   ```
+### Core Tables
+- **users**: User accounts with authentication and profile data
+- **roles**: System roles (admin, finance_manager, viewer)
+- **teams**: Organizational units for payment management
+- **payments**: Core payment transactions
+- **categories**: Payment classification (Office Supplies, Travel, etc.)
+- **status**: Payment workflow states (PENDING, APPROVED, REJECTED)
+- **audit_logs**: Complete audit trail for compliance
 
-2. **Access the application**
-   - Application URL: `http://localhost:8080`
-   - API Documentation: `http://localhost:8080/swagger-ui.html` (if Swagger is configured)
+## Entity Relationships
+
+<img src="images/ERD.png">
+
+## Class Diagram
+
+<img src="images/classDiagram.png">
 
 ## 📁 Project Structure
 
 ```
-Payment/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── payment/
-│   │   │           ├── controller/     # REST controllers
-│   │   │           ├── service/        # Business logic
-│   │   │           ├── repository/     # Data access layer
-│   │   │           ├── model/          # Entity classes
-│   │   │           ├── dto/            # Data transfer objects
-│   │   │           ├── config/         # Configuration classes
-│   │   │           └── util/           # Utility classes
-│   │   └── resources/
-│   │       ├── application.properties  # Application configuration
-│   │       └── static/                 # Static resources
-│   └── test/
-│       └── java/                       # Test classes
-├── target/                             # Compiled classes (Maven)
-├── pom.xml                            # Maven dependencies (if using Maven)
-├── build.gradle                       # Gradle dependencies (if using Gradle)
-└── README.md                          # Project documentation
-```
-
-## ⚙️ Configuration
-
-### Database Configuration
-Update `src/main/resources/application.properties`:
-
-```properties
-# Database Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/payment_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-
-# Payment Gateway Configuration
-payment.gateway.api.key=your_api_key
-payment.gateway.secret=your_secret_key
-payment.gateway.webhook.url=your_webhook_url
-```
-
-### Environment Variables
-Set the following environment variables for production:
-
-```bash
-export DB_URL=your_database_url
-export DB_USERNAME=your_db_username
-export DB_PASSWORD=your_db_password
-export PAYMENT_API_KEY=your_payment_api_key
-export JWT_SECRET=your_jwt_secret
+src/main/java/org/paymentmanagementsystem/
+├── Main.java                           # Application entry point
+├── config/
+│   └── DatabaseConfig.java            # Database configuration
+├── controller/
+│   ├── UserController.java           # User operations
+│   ├── AuthController.java            # Authentication
+│   └── PaymentController.java         # Payment operations
+├── dto/
+│   ├── LoginRequestDTO.java           # Login data transfer
+│   ├── PaymentDTO.java               # Payment data transfer
+│   └── UserDTO.java                  # User data transfer
+├── exception/
+│   ├── AuthenticationException.java   # Auth exceptions
+│   ├── AuthorizationException.java    # Authorization exceptions
+│   └── PaymentException.java         # Payment exceptions
+├── model/
+│   ├── Category.java                 # Payment categories
+│   ├── Payment.java                  # Core payment entity
+│   ├── Role.java                     # User roles
+│   ├── Status.java                   # Payment status
+│   ├── Team.java                     # Team management
+│   └── User.java                     # User accounts
+├── repository/
+│   ├── CategoryRepository.java        # Category data access
+│   ├── PaymentRepository.java        # Payment data access
+│   ├── StatusRepository.java         # Status data access
+│   ├── TeamRepository.java           # Team data access
+│   └── UserRepository.java           # User data access
+├── service/
+│   ├── AuditService.java             # Audit trail logging
+│   ├── AuthService.java              # Authentication logic
+│   ├── PaymentService.java           # Payment business logic
+│   ├── ReportService.java            # Report generation
+│   └── SalaryService.java            # Salary management
+└── util/
+    ├── DatabaseInitializer.java      # Database setup
+    ├── PasswordUtil.java             # Password encryption
+    └── ValidationUtil.java           # Input validation
 ```
 
 
-### Test Coverage
-- Unit tests for service layer
-- Integration tests for API endpoints
-- Database layer testing
-
-
-### Code Style Guidelines
-- Follow Java naming conventions
-- Use meaningful variable and method names
-- Write comprehensive JavaDoc comments
-- Maintain test coverage above 80%
-
-## 📄 License
-
-This project is private and proprietary. All rights reserved.
-
-## 📞 Contact
-
-**Project Owner**: ayushjai_Zeta  
-**Repository**: [ayush045/Payment](https://github.com/Ayushj045/Payment)  
-**Issues**: [Report Issues](https://github.com/Ayushj045/Payment/issues)
-
----
-
-## 📈 Project Status
-
-- **Created**: August 3, 2025
-- **Last Updated**: August 3, 2025
-- **Status**: Active Development
-- **Version**: 1.0.0-SNAPSHOT
-
-## 🔄 Recent Updates
-
-- Initial project setup
-- Core payment processing framework
-- Basic API structure implementation
-
----
-
-*This README is a living document and will be updated as the project evolves.*
